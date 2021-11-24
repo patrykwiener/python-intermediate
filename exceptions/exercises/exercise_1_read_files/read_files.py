@@ -35,34 +35,34 @@ EXERCISES_PATH = os.path.dirname(os.path.dirname(__file__))
 
 PATHS = [
     os.path.join(EXERCISES_PATH, 'assets', 'file1'),
+    os.path.join(EXERCISES_PATH, 'assets', 'file2'),
     os.path.join(EXERCISES_PATH, 'assets', 'file3'),
     os.path.join(EXERCISES_PATH, 'assets', 'file4'),
 ]
 
 
 def read_file(file_path):
-    with open('')
+    with open(file_path, 'r') as f:
+        return f.readlines()
 
 
 def read_files(file_paths):
-    try:
-        read_file('alamakota')
-    except FileNotFoundError:
-        #to trzeba dodac pusta liste do wyniku
+    content = []
+    for path in file_paths:
+        try:
+            # lines = read_file(path)
+            # content.append(lines)
+            content.append(read_file(file_path=path))
+        except FileNotFoundError:
+            # to trzeba dodac pusta liste do wyniku
+            content.append([])
+    return content
 
 
 if __name__ == '__main__':
-    # print(__file__)
-    #
-    # exercise_1_path = os.path.dirname(__file__)
-    # print(exercise_1_path)
-    #
-    # exercises_path = os.path.dirname(exercise_1_path)
-    # # exercises_path = os.path.dirname(os.path.dirname(__file__))
-    # print(exercises_path)
-
-    path = os.path.join(EXERCISES_PATH, 'assets', 'file1')
-    print(read_file(file_path=path))
+    # path = os.path.join(EXERCISES_PATH, 'assets', 'file1')
+    # print(read_file(file_path=path))
 
     content = read_files(PATHS)
-    print(content)
+    for file_content in content:
+        print(file_content)
