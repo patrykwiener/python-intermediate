@@ -4,10 +4,22 @@ def dummy_func():
     for elem in b:
         try:
             wynik = a / elem
-        except ZeroDivisionError:
-            continue
+        except ZeroDivisionError as exp:
+            # print('Pamietaj cholero nie dziel przez zero')
+            # continue
+            raise ValueError(str(exp))
+            # wynik = 'Pamietaj cholero nie dziel przez zero'
         print(f"Wynik to: {wynik}")
 
+
+
+class MyClass:
+    def __str__(self):
+        return 'ALa ma kota'
+
+
+obj = MyClass()
+print(str(obj))
 
 if __name__ == '__main__':
     dummy_func()

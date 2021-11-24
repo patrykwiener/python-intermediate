@@ -8,6 +8,7 @@ POPULAR_EXCEPTIONS = [
     NameError,
     ValueError,
     ZeroDivisionError,
+    SyntaxError,
 ]
 
 
@@ -31,7 +32,7 @@ def throw_index_error():
 
 
 def throw_import_error():
-    pass
+    import ala_ma_kota
 
 
 def throw_key_error():
@@ -42,8 +43,8 @@ def throw_key_error():
     print(sample_dict['test3'])
 
 
-def throw_name_error():
-    prin('Our beautiful string!')
+# def throw_name_error():
+#     prin('Our beautiful string!')
 
 
 def throw_value_error():
@@ -54,6 +55,11 @@ def throw_zero_division_error():
     print(1 / 0)
 
 
+# def throw_syntax_error():
+#     if True
+#         print('If with :')
+
+
 if __name__ == '__main__':
     throw_assertion_error()
     throw_attribute_error()
@@ -61,6 +67,7 @@ if __name__ == '__main__':
     throw_index_error()
     throw_import_error()
     throw_key_error()
-    throw_name_error()
+    # throw_name_error()
     throw_value_error()
     throw_zero_division_error()
+    # throw_syntax_error()
