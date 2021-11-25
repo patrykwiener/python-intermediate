@@ -16,28 +16,67 @@ Specyfikacja:
 *   Metoda 'unlock' odryglowuje nam drzwi, ale tylko w przypadku gdy podamy odpowiedni kod otwarcia.
     W momencie gdy kod jest niepoprawny rzucany jest wyjątek UnlockCodeError, ktory nalezy samemu stworzyć
 """
-DoorLockedError
-UnlockCodeError
+
+
+class DoorLockedError(Exception):
+    pass
+
+
+class UnlockCodeError(Exception):
+    pass
+
+
+class DoorOpenedError(Exception):
+    pass
+
 
 class DoorController:
 
     def __init__(self, unlock_code):
-        pass
+        self._is_opened = False
+        self._is_locked = False
+        self._unlock_code = unlock_code
 
     def is_door_open(self):
-        pass
+        return self._is_opened
 
     def is_door_locked(self):
-        pass
+        return self._is_locked
 
     def open(self):
-        pass
+        if self._is_locked:
+            raise DoorLockedError
+        self._is_opened = True
 
     def close(self):
-        pass
+        self._is_opened = False
 
     def lock(self):
-        pass
+        if self._is_opened:
+            raise DoorOpenedError
+        self._is_locked = True
 
     def unlock(self, code):
-        pass
+        # if self._unlock_code == code:
+        #     self._is_locked = False
+        # else:
+        #     raise UnlockCodeError
+        self._validate_unlock(code=code)
+        self._is_locked = False
+
+    def _validate_unlock(self, code):
+        # mozna ale nie trzeba
+        if self._unlock_code != code:
+            raise UnlockCodeError
+
+
+if __name__ == '__main__':
+    door_controller = DoorController(unlock_code='1234')
+    print(door_controller.is_door_open())
+    print(door_controller.is_door_locked())
+    door_controller.open()
+    door_controller.close()
+    door_controller.lock()
+    door_controller.unlock(code='1234')
+    door_controller.lock()
+    door_controller.unlock(code='4321')
