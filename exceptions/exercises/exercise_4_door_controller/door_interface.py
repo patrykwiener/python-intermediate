@@ -29,7 +29,7 @@ Logika dla obsługi poszczegolnej komendy ma byc zaimplementowana w chronionej m
 """
 
 from exceptions.exercises.exercise_4_door_controller.door_controller import DoorController, \
-    DoorLockedError, UnlockCodeError
+    DoorLockedError, UnlockCodeError, DoorOpenedError
 
 
 class DoorInterface:
@@ -38,7 +38,11 @@ class DoorInterface:
         self._door_controller = door_controller
 
     def _open(self):
-        pass
+        try:
+            self._door_controller.open()
+        except DoorLockedError:
+            return 'fkfjsd'
+        return 'dfjsdlfkjds'
 
     def _close(self):
         pass
@@ -56,7 +60,10 @@ class DoorInterface:
         pass
 
     def perform_operation(self, user_input):
-        pass
+        if <input_usera> == 'open':
+            self._open()
+        elif <input_usera> == 'close':
+            self._close()
 
 
 def main_loop():
