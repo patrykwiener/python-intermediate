@@ -28,8 +28,12 @@ Dostępne komendy:
 Logika dla obsługi poszczegolnej komendy ma byc zaimplementowana w chronionej metodzie zgodnie z szablonem
 """
 
-from exceptions.exercises.exercise_4_door_controller.door_controller import DoorController, \
-    DoorLockedError, UnlockCodeError, DoorOpenedError
+from exceptions.exercises.exercise_4_door_controller.door_controller import (
+    DoorController,
+    DoorLockedError,
+    DoorOpenedError,
+    UnlockCodeError,
+)
 
 
 class DoorInterface:
@@ -41,29 +45,56 @@ class DoorInterface:
         try:
             self._door_controller.open()
         except DoorLockedError:
-            return 'fkfjsd'
-        return 'dfjsdlfkjds'
+            return 'You have to unlock the door before you can open.'
+        return 'Opened the door.'
 
     def _close(self):
-        pass
+        self._door_controller.close()
+        return 'Closed the door.'
 
     def _is_open(self):
-        pass
+        return self._door_controller.is_door_open()
 
     def _is_locked(self):
-        pass
+        return self._door_controller.is_door_locked()
 
     def _lock(self):
-        pass
+        try:
+            self._door_controller.lock()
+        except DoorOpenedError:
+            return 'You have to close the door before you can lock.'
+        return 'Locked the door.'
 
     def _unlock(self, unlock_code):
-        pass
+        try:
+            self._door_controller.unlock(code=unlock_code)
+        except UnlockCodeError:
+            return 'Invalid unlock code. Please try again.'
+        return 'The door unlocked successfully!'
 
     def perform_operation(self, user_input):
-        if <input_usera> == 'open':
-            self._open()
-        elif <input_usera> == 'close':
-            self._close()
+        # unlock 1234
+        if user_input == '':
+            return 'Invalid input. Try again...'
+
+        input_list = user_input.split()
+        command = input_list[0]
+
+        if command == 'open':
+            return self._open()
+        if command == 'close':
+            return self._close()
+        if command == 'is_opened':
+            return self._is_open()
+        if command == 'is_locked':
+            return self._is_locked()
+        if command == 'lock':
+            return self._lock()
+        if command == 'unlock':
+            code = input_list[1]
+            return self._unlock(unlock_code=code)
+        else:
+            return 'Unknown operation. Try again...'
 
 
 def main_loop():
