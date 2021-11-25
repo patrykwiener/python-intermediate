@@ -5,7 +5,7 @@ Wyobraźmy sobie, że piszemy sterownik do kontroli drzwi. Drzwi mogą się otwi
 
 Specyfikacja:
 *   Tworząc obiekt domyślnie stan drzwi (atrybut prywatny '_is_opened') oraz stan rygla ('_is_locked') są równy False
-*   W konstruktorze podajemy takze kod otwierający odryglowujący nasze drzwi. Jest on zapisywany do atrybutu self._is_locked
+*   W konstruktorze podajemy takze kod otwierający/odryglowujący nasze drzwi. Jest on zapisywany do atrybutu self._unlock_code
 *   Metoda 'is_door_opened' pozwalającą sprawdzić aktualny stan drzwi (czy są otwarte czy zamknięte). Zwraca wartość
     boolowską (True lub False)
 *   Metoda 'open' otwiera drzwi poprzez odpowiednie ustawienie atrybutu '_is_opened'.
@@ -16,7 +16,8 @@ Specyfikacja:
 *   Metoda 'unlock' odryglowuje nam drzwi, ale tylko w przypadku gdy podamy odpowiedni kod otwarcia.
     W momencie gdy kod jest niepoprawny rzucany jest wyjątek UnlockCodeError, ktory nalezy samemu stworzyć
 """
-
+DoorLockedError
+UnlockCodeError
 
 class DoorController:
 
