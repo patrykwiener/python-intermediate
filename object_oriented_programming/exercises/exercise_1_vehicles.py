@@ -38,3 +38,53 @@ jakiej kolejności powinny się wykonać konstruktory klas, po których dziedzic
 
 """
 from abc import ABC, abstractmethod
+
+
+class Vehicle(ABC):
+    @abstractmethod
+    def get_current_speed(self):
+        pass
+
+
+class LandVehicle(Vehicle, ABC):
+    def __init__(self, wheels_number: int):
+        super().__init__()
+        self._wheels_number = wheels_number
+
+    @abstractmethod
+    def drive(self):
+        pass
+
+
+class WaterVehicle(Vehicle, ABC):
+    def __init__(self, name: str, propulsion_type: str):
+        super().__init__()
+        self._name = name
+        self._propulsion_type = propulsion_type
+
+    @abstractmethod
+    def swim(self):
+        pass
+
+
+class Car(LandVehicle):
+    def drive(self):
+        print('Driving...')
+
+    def get_current_speed(self):
+        print('50km/h')
+
+
+class Ship(WaterVehicle):
+    def swim(self):
+        print('Swimming...')
+
+    def get_current_speed(self):
+        print('10mil/h')
+
+
+if __name__ == '__main__':
+    car = Car(wheels_number=4)
+    ship = Ship(name='Nugat', propulsion_type='asd')
+    car.get_current_speed()
+    car.drive()
