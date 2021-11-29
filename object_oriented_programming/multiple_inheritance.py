@@ -1,4 +1,7 @@
-class Osoba:
+from abc import ABC, abstractmethod
+
+
+class Osoba(ABC):
     def __init__(self, imie, wiek):
         self.imie = imie
         self.wiek = wiek
@@ -6,6 +9,7 @@ class Osoba:
     def __str__(self):
         return f"{self.imie} ma {self.wiek} lat"
 
+    @abstractmethod
     def pokaz_finanse(self):
         pass
 
@@ -41,11 +45,11 @@ class PracujacyStudent(Pracownik, Student):
 
 
 if __name__ == '__main__':
-    os1 = Osoba("Henryk", 54)
+    # os1 = Osoba("Henryk", 54)
     os2 = Pracownik("Jacek", 36, 20, 160)
     os3 = Student("Agata", 22, 1000)
     os4 = PracujacyStudent("Monika", 24, 9.5, 70, 550)
-    print(os1)
+    # print(os1)
     print(os2)
     print(os3)
     print(os4)
