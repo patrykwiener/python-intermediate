@@ -6,6 +6,9 @@ class Osoba:
     def __str__(self):
         return f"{self.imie} ma {self.wiek} lat"
 
+    def pokaz_finanse(self):
+        pass
+
 
 class Pracownik(Osoba):
     def __init__(self, imie, wiek, stawka, liczba_godzin):
@@ -32,6 +35,7 @@ class PracujacyStudent(Pracownik, Student):
         Student.__init__(self, imie, wiek, stypendium)
 
     def pokaz_finanse(self):
+        # MRO - Method Resolution Order
         # return self.stawka * self.liczba_godzin + self.stypendium
         return Pracownik.pokaz_finanse(self) + Student.pokaz_finanse(self)
 
