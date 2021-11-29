@@ -32,7 +32,8 @@ class PracujacyStudent(Pracownik, Student):
         Student.__init__(self, imie, wiek, stypendium)
 
     def pokaz_finanse(self):
-        return self.stawka * self.liczba_godzin + self.stypendium
+        # return self.stawka * self.liczba_godzin + self.stypendium
+        return Pracownik.pokaz_finanse(self) + Student.pokaz_finanse(self)
 
 
 if __name__ == '__main__':
