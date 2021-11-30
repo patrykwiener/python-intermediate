@@ -41,15 +41,23 @@ from abc import ABC, abstractmethod
 
 
 class Vehicle(ABC):
+    def __init__(self, color):
+        self.color = color
+
     @abstractmethod
     def get_current_speed(self):
         pass
 
 
 class LandVehicle(Vehicle, ABC):
-    def __init__(self, wheels_number: int):
-        super().__init__()
+    def __init__(self, wheels_number: int, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self._wheels_number = wheels_number
+
+    #
+    # def __init__(self, wheels_number: int):
+    #     Vehicle.__init__(self)
+    #     self._wheels_number = wheels_number
 
     @abstractmethod
     def drive(self):
@@ -57,10 +65,15 @@ class LandVehicle(Vehicle, ABC):
 
 
 class WaterVehicle(Vehicle, ABC):
-    def __init__(self, name: str, propulsion_type: str):
-        super().__init__()
+    def __init__(self, name: str, propulsion_type: str, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self._name = name
         self._propulsion_type = propulsion_type
+
+    # def __init__(self, name: str, propulsion_type: str):
+    #     Vehicle.__init__(self)
+    #     self._name = name
+    #     self._propulsion_type = propulsion_type
 
     @abstractmethod
     def swim(self):
@@ -83,8 +96,57 @@ class Ship(WaterVehicle):
         print('10mil/h')
 
 
+class AmphibiousVehicle(LandVehicle, WaterVehicle):
+
+    def __init__(self, wheels_number: int, name: str, propulsion_type: str, color: str):
+        super().__init__(wheels_number=wheels_number, name=name, propulsion_type=propulsion_type, color=color)
+
+    # def __init__(self, wheels_number: int, name: str, propulsion_type: str):
+    #     LandVehicle.__init__(self, wheels_number)
+    #     WaterVehicle.__init__(self, name, propulsion_type)
+
+    def drive(self):
+        print('Amphibious vehicle is driving...')
+
+    def swim(self):
+        print('Amphibious vehicle is swimming...')
+
+    def get_current_speed(self):
+        print('35km/h')
+
+
 if __name__ == '__main__':
-    car = Car(wheels_number=4)
-    ship = Ship(name='Nugat', propulsion_type='asd')
-    car.get_current_speed()
-    car.drive()
+    # car = Car(wheels_number=4)
+    # ship = Ship(name='Nugat', propulsion_type='asd')
+    # car.get_current_speed()
+    # car.drive()
+
+    amphibious_vehicle = AmphibiousVehicle(
+        wheels_number=6,
+        name='Vitory',
+        propulsion_type='electric',
+        color='Blue',
+    )
+    amphibious_vehicle.drive()
+    amphibious_vehicle.swim()
+    amphibious_vehicle.get_current_speed()
+
+
+"""
+               Vehicle
+             /         \ 
+      LandVehicle      WaterVehicle     
+            \           /
+             \         /
+            AmphibiousVehicle
+            
+            
+Po uruchomieniu programu mamy spłaszczenie (jeden wymiar):
+                Vehicle
+                   |
+              WaterVehicle
+                   |
+               LandVehicle
+                   |
+             AmphibiousVehicle
+"""
