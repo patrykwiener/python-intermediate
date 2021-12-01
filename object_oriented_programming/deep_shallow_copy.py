@@ -4,6 +4,7 @@ from object_oriented_programming.dataclass import Prostokat
 
 if __name__ == '__main__':
     p1 = Prostokat(3, 4)
+    p2 = deepcopy(p1)
 
     lst = [1, p1, 3]
 
