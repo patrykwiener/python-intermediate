@@ -40,5 +40,3 @@ if __name__ == '__main__':
         120,
     )  # 15
 
-    # co jest pythonowym odpowiednikiem map?
-    # co jest pythonowym odpowiednikiem filter?

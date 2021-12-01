@@ -37,11 +37,17 @@ EXPECTED_TOTAL_COST = 950
 DISCOUNTED_PRICES = [350, 50, 75]
 
 if __name__ == '__main__':
-    cart = list(filter(...))
+    cart = list(filter(lambda item: item.in_cart, PRODUCT_LIST))
+    cart = [item for item in PRODUCT_LIST if item.in_cart]
     assert cart == EXPECTED_PRODUCT_LIST
 
-    total_cost = reduce(...)
+    total_cost = reduce(lambda total, item: total + item.cost, cart, 0)
+    # to nie jest equivalent!
+    # jezeli zamiast dodawania mielibyśmy np. -, to zauważmy, że już by to nie działało
+    # Python nie posiada equivalentu reduce
+    total_cost = sum([item.cost for item in cart])
     assert total_cost == EXPECTED_TOTAL_COST
 
-    discounted_prices = list(map(...))
+    discounted_prices = list(map(lambda item: item.cost * 0.5, cart))
+    discounted_prices = [item.cost * 0.5 for item in cart]
     assert discounted_prices == DISCOUNTED_PRICES
