@@ -1,0 +1,12 @@
+[
+  {
+    "imie": "Adam",
+    "nazwisko": "Kowalski",
+    "liczba punktow": 20
+  },
+  {
+    "imie": "Janusz",
+    "nazwisko": "Smuga",
+    "liczba punktow": 17
+  }
+]
