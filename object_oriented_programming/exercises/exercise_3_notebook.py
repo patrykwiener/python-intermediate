@@ -7,7 +7,7 @@ sprzedażą komputerów. Do tego chcemy wykorzystać dekorator @dataclass.
 Specyfikacja:
 * atrybut brand - string zawierający nazwę firmy laptopa
 * atrybut model - string zawierający nazwę laptopa np. Yoga 720
-* atrubut price - float reprezentujący cenę laptopa
+* atrybut price - float reprezentujący cenę laptopa
 * production_year - int reprezentujący rok produkcji danego laptopa
 * screen_size - float określający wielkość przekątnej ekranu w calach
 * charger_included - bool określający czy ładowarka jest zawarta w ofercie. Dodatkowo wartość
@@ -20,3 +20,34 @@ Specyfikacja:
 """
 
 from dataclasses import dataclass, field
+
+
+@dataclass
+class Notebook:
+    brand: str
+    model: str
+    price: float
+    production_year: int
+    screen_size: float
+    charger_included: bool = field(default=True, repr=False)
+    is_second_handed: bool = field(default=False)
+    is_antique: bool = field(init=False)
+
+    def __post_init__(self):
+        self.is_antique = self.production_year < 2000
+        # if self.production_year < 2000:
+        #     self.is_antique = True
+        # else:
+        #     self.is_antique = False
+
+
+if __name__ == '__main__':
+    notebook = Notebook(
+        brand='Dell',
+        model='Latitude 7490',
+        price=3000,
+        production_year=1999,
+        screen_size=14.1,
+        is_second_handed=True,
+    )
+    print(notebook)

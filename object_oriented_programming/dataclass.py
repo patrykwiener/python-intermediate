@@ -65,4 +65,5 @@ if __name__ == '__main__':
         sample_list_of_ints=[1, 2, 3],
         sample_not_in_repl_int=999,
     )
+    print(sample)
     t=0
