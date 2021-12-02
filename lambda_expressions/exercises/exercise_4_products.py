@@ -53,6 +53,10 @@ def make_discount_extended(discount: float) -> Callable:
     return internal_make_discount
 
 
+def make_discount_extended(discount: float) -> Callable:
+    return lambda item: item.cost * discount
+
+
 func = make_discount_extended(discount=0.25)
 print(PRODUCT_LIST[0])
 print(func(product=PRODUCT_LIST[0]))
