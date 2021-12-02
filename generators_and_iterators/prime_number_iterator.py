@@ -1,3 +1,5 @@
+import time
+
 from generators_and_iterators.prime_number_list import is_prime
 
 
@@ -22,6 +24,14 @@ class PrimeIterator:
 
 
 if __name__ == '__main__':
-    iter = PrimeIterator(100000)
+    start = time.time()
+    iter = PrimeIterator(n=3)
+
+    # a = iter.__next__()
+    # b = iter.__next__()
+    # c = next(iter)
+    # d = next(iter)
+
     for elem in iter:
         print(elem)
+    print(time.time() - start)

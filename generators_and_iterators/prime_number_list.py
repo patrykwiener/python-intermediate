@@ -1,3 +1,4 @@
+import time
 from math import sqrt
 
 
@@ -19,6 +20,8 @@ def get_n_primes(n):
 
 
 if __name__ == '__main__':
-    lst = get_n_primes(1000000)
+    start = time.time()
+    lst = get_n_primes(100000)
     for elem in lst:
         print(elem)
+    print(time.time() - start)

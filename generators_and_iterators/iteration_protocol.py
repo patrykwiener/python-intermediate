@@ -9,5 +9,5 @@ if __name__ == '__main__':
         print(item)
 
     a = {'imie': "Adam", 'nazwisko': "Kowalski"}
-    for item in a:
-        print(item)
+    for key, value in a.items():
+        print(f'{key}: {value}')
