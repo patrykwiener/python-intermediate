@@ -16,14 +16,17 @@ W tym celu uzupelnij cialo iteratora IndexIterator.
 class IndexIterator:
 
     def __init__(self):
-        pass
+        self._index = 0
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        pass
-
+        # self._index += 1
+        # return self._index
+        current_index = self._index
+        self._index += 1
+        return current_index
 
 index_iterator = IndexIterator()
 
