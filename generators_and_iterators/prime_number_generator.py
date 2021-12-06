@@ -14,5 +14,10 @@ def prime_generator(n):
 
 if __name__ == '__main__':
     gen = prime_generator(1000000)
+    a = next(gen)
+    b = next(gen)
+    c = next(gen)
+    d = next(gen)
+
     for elem in gen:
         print(elem)
