@@ -37,4 +37,5 @@ def average_salary(filepath, index):
 
 
 if __name__ == '__main__':
-    print(average_salary(CSV_FILE, 1))
+    average = average_salary(CSV_FILE, 1)
+    print(average)
