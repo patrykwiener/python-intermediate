@@ -18,7 +18,7 @@ wcześniej.
 
 import csv
 
-from serialization.consts import CSV_EXERCISE_FILE
+from serialization.consts import CSV_FILE
 
 
 def average_salary(filepath, index):
@@ -26,4 +26,4 @@ def average_salary(filepath, index):
 
 
 if __name__ == '__main__':
-    print(average_salary(CSV_EXERCISE_FILE, 1))
+    print(average_salary(CSV_FILE, 1))
