@@ -8,12 +8,12 @@ dane json i załaduje do dict, ktory zostanie zwrocony.
 
 W następnym kroku napiszemy funkcje search_data, która będzie filtrowala te dane na podstawie
 dostarczonego atrybutu i jego wartości.
-* Jako parametry dostaje odczytane dane w postaci dict, nazwę atrybutu, ktory nas interesuje
+* Jako parametry dostaje odczytane dane w postaci listy dictów, nazwę atrybutu, ktory nas interesuje
   i jego wartosc.
 * Jako wartość zwracana jest to lista dictów zawierających wskazany atrybut o wskazanej wartości
 
 TIPS:
-* odczytane dane dostarczone do funckcji beda juz w formacie listy dictów
+* odczytane dane dostarczone do funkcji beda juz w formacie listy dictów
 * aby sprawdzać każdy element listy (każdy dict) użyjmy pętli for
 * musimy zdefiniować listę do któej będziemy dodawać dicty, ktore spełniają warunek naszego filtra
 * do sprawdzania wartosci atrybutu danego dicta warto posluzyc sie metoda dict get(<attribute>)
@@ -48,4 +48,10 @@ def search_data(data, attribute, value):
 
 if __name__ == '__main__':
     data = load_data(USERS_DATA_FILE)
-    print(search_data(data, 'sex', 'M'))
+    print(
+        search_data(
+            data=data,
+            attribute='sex',
+            value='M'
+        )
+    )
