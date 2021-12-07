@@ -16,6 +16,7 @@ Naszym zadaniem jest napisanie context managera imitującego zachowanie funkcji 
        metody zwrócić True
 
 """
+import pytest
 
 
 class PytestRaisesEquivalent:
@@ -30,7 +31,14 @@ class PytestRaisesEquivalent:
         pass
 
 
-if __name__ == '__main__':
-    with PytestRaisesEquivalent(NotImplementedError, match='test msg'):
-        raise NotImplementedError('test msg')
+def func(param):
+    if param < 0:
+        raise ValueError('Ala ma kota')
 
+
+if __name__ == '__main__':
+    # with PytestRaisesEquivalent(NotImplementedError, match='test msg'):
+    #     raise NotImplementedError('test msg')
+
+    with pytest.raises(ValueError, match='Ala ma kota'):
+        func(-1)
