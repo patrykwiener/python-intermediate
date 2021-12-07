@@ -17,4 +17,10 @@ def copy(src_file, destination_file):
 
 
 if __name__ == '__main__':
-    pass
+    exercises_path = os.path.dirname(__file__)
+    src_file = os.path.join(exercises_path, 'assets', 'file-to-copy.txt')
+    destination_file = os.path.join(exercises_path, 'assets', 'copied-file.txt')
+    copy(
+        src_file=src_file,
+        destination_file=destination_file,
+    )

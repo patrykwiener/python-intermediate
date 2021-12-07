@@ -12,6 +12,7 @@ class FileManager:
         self.file_obj.close()
         return True
 
+
 if __name__ == '__main__':
     with FileManager('exercises/assets/test-file.txt', 'w') as file:
         raise NotImplementedError('Ala ma kota! Ale fajny kot!')
