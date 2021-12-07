@@ -12,8 +12,11 @@ Naszym zadaniem jest napisanie funkcji kopiującej dane z jednego pliku do drugi
 import os
 
 
-def copy(src_file, destination_file):
-    pass
+def copy(src_file: str, destination_file: str):
+    with open(src_file, 'r') as f:
+        data = f.read()
+    with open(destination_file, 'w') as f:
+        f.write(data)
 
 
 if __name__ == '__main__':
