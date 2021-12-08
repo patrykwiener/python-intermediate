@@ -26,14 +26,15 @@ def to_uppercase(func):
     pass
 
 
+@include_length
 @to_uppercase
 def scatter_string(string):
     return " ".join(string)
 
 
 if __name__ == '__main__':
-    # 'hello' -> 'h e l l o' -> 'H E L L O'
-    #    |           |              |
-    # parametr   wynik func    wynik func po @
+    # 'hello' -> 'h e l l o' -> 'H E L L O' -**> (9, 'H E L L O')
+    #    |           |              |                   |
+    # parametr   wynik func    wynik func po @     wynik po @*
     assert scatter_string('hello') == 'H E L L O'
     # assert scatter_string('hello') == (9, 'H E L L O')
