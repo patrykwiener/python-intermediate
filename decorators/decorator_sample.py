@@ -13,7 +13,7 @@ def sample_func1():
 
 
 # ekwiwalent dekoratora
-sample_func1 = decorator(sample_func1)
+# sample_func1 = decorator(sample_func1)
 
 
 def parametrized_decorator(before_msg, after_msg):
@@ -33,6 +33,12 @@ def sample_func2():
     print('Hello World')
 
 
+@parametrized_decorator('Parametrized before', 'Parametrized after')
+@decorator
+def sample_func3():
+    print('Hello World')
+
+
 def decorator_func_with_params(func):
     def wrapper(*args, **kwargs):
         print('Before')
@@ -42,10 +48,8 @@ def decorator_func_with_params(func):
     return wrapper
 
 
-@parametrized_decorator('Parametrized before', 'Parametrized after')
-@decorator
-def sample_func3():
-    print('Hello World')
+# func = parametrized_decorator('Parametrized before', 'Parametrized after')
+# sample_func3 = func(decorator(func=sample_func3))
 
 
 @decorator_func_with_params
@@ -57,11 +61,11 @@ if __name__ == '__main__':
     # print('--- 1 ---')
     # sample_func1()
 
-    print('\n--- 2 ---')
-    sample_func2()
+    # print('\n--- 2 ---')
+    # sample_func2()
 
     # print('\n--- 3 ---')
     # sample_func3()
-    #
-    # print('\n--- 4 ---')
-    # sample_func4('My hello world')
+
+    print('\n--- 4 ---')
+    sample_func4('My hello world')

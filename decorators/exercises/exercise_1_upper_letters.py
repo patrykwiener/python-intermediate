@@ -32,5 +32,8 @@ def scatter_string(string):
 
 
 if __name__ == '__main__':
+    # 'hello' -> 'h e l l o' -> 'H E L L O'
+    #    |           |              |
+    # parametr   wynik func    wynik func po @
     assert scatter_string('hello') == 'H E L L O'
     # assert scatter_string('hello') == (9, 'H E L L O')
