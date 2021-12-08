@@ -15,5 +15,11 @@ def say_something():
     print("Hello world")
 
 
+@disable_at_night
+def my_func():
+    print('Ala ma kota')
+
+
 if __name__ == '__main__':
     say_something()
+    my_func()
