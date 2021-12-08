@@ -18,7 +18,11 @@ USER_DATA = {
 
 
 def strip_input_decorator(func):
-    pass
+    def wrapper(user_input: str, *args, **kwargs):
+        data = user_input.strip().replace(' ', '_')
+        return func(data, *args, **kwargs)
+
+    return wrapper
 
 
 @strip_input_decorator
@@ -27,7 +31,7 @@ def get_user_data(user_input):
 
 
 if __name__ == '__main__':
-    assert get_user_data('id') == 1
+    assert get_user_data(user_input='id') == 1
     assert get_user_data('read books   ') == ['Harry Potter', 'Lord of the Rings', 'Dune']
     assert get_user_data('favorite pet  ') == 'dog'
     assert get_user_data('  number_of_children') == 4
