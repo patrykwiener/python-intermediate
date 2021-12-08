@@ -5,7 +5,9 @@ Naszym zadaniem jest napisanie dekoratora strip_input_decorator, ktorego dzialan
 odpowiednie przygotowanie danych wejściowy dla funkcji pobierającej dane uzytkownika z
 "bazy danych". Takie przygotowanie zakłada usunięcie białych znaków na początku i końcu
 przychodzacego stringa (strip()) oraz zastąpienie w wszystkich spacji wewnątrz stringa znakiem '_'.
-* w dekoratorze przygowanie danych nalezy przeprowadzic przed wywołaniem funkcji udekorowanej
+* w dekoratorze przygotowanie danych nalezy przeprowadzic przed wywołaniem funkcji udekorowanej
+* <str>.replace(<wartosc_do_zastapienia>, <zemiennik>)
+* <str>.strip()
 """
 USER_DATA = {
     'id': 1,
