@@ -3,13 +3,13 @@ USER HAS PERMISSION
 
 Naszym zadaniem jest napisanie dekoratora sprawdzającego czy dany uzytkownik ma dostęp do wykonania
 danej operacji. W tym przypadku mowimy tutaj o dostepie do usuniecia post'a z platformy typu
-Facebook. Usunąć post może tylko autor postu lub administrator strony. Zwykły użytkonik, który
-tylko czyta ten post nie możę tego zrobić.
+Facebook. Usunąć post może tylko autor postu lub administrator strony. Zwykły użytkownik, który
+tylko czyta ten post nie może tego zrobić.
 
-W słowniku USERS mamy zdefiniowanych trzech użytkoników o różnych poziomach dostępów.
+W słowniku USERS mamy zdefiniowanych trzech użytkowników o różnych poziomach dostępów.
 
-Nasz dekorator powinien przyjmowac jako parametry liste zawierającą poziomy dostępó z jakimi
-użytkonik może wykonać udekorowaną funkcję. Przykładowe wywołanie jest zareprezentowane na
+Nasz dekorator powinien przyjmowac jako parametry liste zawierającą poziomy dostępów z jakimi
+użytkownik może wykonać udekorowaną funkcję. Przykładowe wywołanie jest zareprezentowane na
 definicji funkcji delete_post.
 * dekorator wykonuje funkcje w momencie gdy uzytkownik, który wykonał operacje ma do niej dostęp
 * w przeciwnym wypadku dekorator zwraca False
