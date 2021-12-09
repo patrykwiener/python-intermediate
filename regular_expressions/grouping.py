@@ -2,8 +2,8 @@ import re
 
 if __name__ == "__main__":
     text = "Tomasz W. (33 l.), widziany ostatnio w Krakowie"
-    pattern = r"([A-Z]{1}[a-z]+ [A-Z]{1}\.) \((\d+) l.\)"
-    match = re.search(pattern, text)
+    pattern = r"([A-Z][a-z]+ [A-Z]\.) \((\d+) l.\)"
+    match = re.search(r"([A-Z][a-z]+ [A-Z]\.) \((\d+) l\.\)", text)
     print(match)
     print(match.groups())
     print(match.group(0))

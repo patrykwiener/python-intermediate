@@ -14,8 +14,16 @@ import re
 import pytest
 
 
-def validate_pin_registration(pin):
+class InvalidPinFormatError(Exception):
     pass
+
+
+def validate_pin_registration(pin):
+    # 1234
+    match = re.search(r'^[0-9]{4}$', pin)
+    # match = re.fullmatch(r'^[0-9]{4}$', pin)
+    if not match:
+        raise InvalidPinFormatError
 
 
 if __name__ == '__main__':

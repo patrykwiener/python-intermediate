@@ -66,7 +66,7 @@ def sub_sample():
 
 
 def subn_sample():
-    updated_str = re.subn(r"[a-z]{4}", "psa", "Ala ma kota i kota")
+    updated_str = re.subn(r"[a-z]{5}", "psa", "Ala ma kota i kota")
     print(updated_str)
 
     updated_str = re.subn(r"[A-Z][a-z]+", "Python",
