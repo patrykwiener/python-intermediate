@@ -20,14 +20,14 @@ class ThreadWithReturnValue(threading.Thread):
 
 
 def print_cube(num):
-    # Funkcja zwracająca trzecią potęgę liczby podanej jako parametr
-    time.sleep(5)
+    # Funkcja wyświetla trzecią potęgę liczby podanej jako parametr
+    time.sleep(3)
     print(f"Cube: {num * num * num}")
 
 
 def print_square(num):
     # Funkcja zwracająca kwadrat liczby podanej jako parametr
-    time.sleep(5)
+    time.sleep(1)
     return num * num
 
 
@@ -41,7 +41,8 @@ if __name__ == "__main__":
     t2.start()
 
     # czekanie z wykonaniem dalszego kodu, aż oba wątki się zakończą
-    print(t1.join())
+    result = t1.join()
+    print(f'Square: {result}')
     t2.join()
 
     print("Done!")

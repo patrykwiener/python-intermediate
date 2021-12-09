@@ -10,7 +10,8 @@ def iterate_print(iter):
 if __name__ == "__main__":
     # tworzenie wątków
     t1 = threading.Thread(target=iterate_print,
-                          args=[range(5)])  # wypisywanie kolejnych liczb naturalnych
+                          args=[[i for i in range(20)]])  # wypisywanie kolejnych liczb naturalnych
+
     t2 = threading.Thread(target=iterate_print,
                           args=["Python"])  # wypisywanie kolejnych znaków napisu
 

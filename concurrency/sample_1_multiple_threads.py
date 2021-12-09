@@ -31,6 +31,14 @@ def with_threading_func(urls):
 
 
 if __name__ == "__main__":
+    # urls = [
+    #         "https://jsonplaceholder.typicode.com/comments/1",
+    #         "https://jsonplaceholder.typicode.com/comments/2",
+    #         "https://jsonplaceholder.typicode.com/comments/3"
+    # ]
+    # without_threading_func(urls=urls)
+    # with_threading_func(urls)
+
     wo_threading = "wo_threading_func(urls)"
     with_threading = "with_threading_func(urls)"
 
