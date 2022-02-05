@@ -50,7 +50,16 @@ USERS = [
 
 
 def check_permission(permission_list):
-    pass
+    def decorator(func):
+        def wrapper(user, *args, **kwargs):
+            # user = kwargs.get('user') or args[0]
+            if user['permission_level'] in permission_list:
+                return func(user, *args, **kwargs)
+            return False
+
+        return wrapper
+
+    return decorator
 
 
 @check_permission([PermissionModel.OWNER, PermissionModel.ADMIN])
@@ -58,7 +67,16 @@ def delete_post(user, post_id):
     return f"User with id {user['id']} deleted post {post_id}"
 
 
+def func():
+    return 0
+
+
 if __name__ == '__main__':
-    assert delete_post(USERS[0], 1) == "User with id 1 deleted post 1"
+    assert delete_post(user=USERS[0], post_id=1) == "User with id 1 deleted post 1"
     assert delete_post(USERS[1], 2) == "User with id 2 deleted post 2"
     assert delete_post(USERS[2], 3) is False
+    assert not delete_post(USERS[2], 3)
+
+    # array = []
+    print(bool(func()))
+    assert not func()
